@@ -1,6 +1,7 @@
 package com.zn.facealivelib.constants.camera;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.util.AttributeSet;
@@ -9,6 +10,7 @@ import android.view.TextureView;
 
 import androidx.annotation.Nullable;
 
+import com.zn.facealivelib.R;
 import com.zn.facealivelib.constants.ErrorCode;
 import com.zn.facealivelib.mvp.exceptions.CameraUnavailableException;
 
@@ -16,7 +18,7 @@ import java.util.List;
 
 public class CameraPreview2 extends TextureView implements TextureView.SurfaceTextureListener {
 
-    private static  int CAMERA_ID = 0;
+    private static int CAMERA_ID;
 
     private static final String TAG = "CameraPreview";
     @Nullable
@@ -40,6 +42,10 @@ public class CameraPreview2 extends TextureView implements TextureView.SurfaceTe
 
     public CameraPreview2(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CameraPreview2);
+        CAMERA_ID = a.getInteger(R.styleable.CameraPreview2_camera,0);
+        mRotation = a.getInteger(R.styleable.CameraPreview2_orientation,90);
+        a.recycle();
         setSurfaceTextureListener(this);
     }
 
@@ -50,32 +56,10 @@ public class CameraPreview2 extends TextureView implements TextureView.SurfaceTe
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
         try {
-            //切换摄像头
-//            if(CachedStatusAndImage.frontCamera)
-//            {
-//                CAMERA_ID = 1;//前向
-//            }
-//            else
-//            {
-//                CAMERA_ID = 0;//后向
-//            }
             openCamera();
             Camera.CameraInfo info = new Camera.CameraInfo();
             Camera.getCameraInfo(CAMERA_ID, info);
-//            int rotation = Surface.ROTATION_0;
-//            if (getContext() instanceof Activity) {
-//                rotation = ((Activity) getContext())
-//                        .getWindowManager().getDefaultDisplay().getRotation();
-//            }
-//
-//            if (this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
-//                rotation = info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT ? 360 - info.orientation : info.orientation;
-//                Log.d(TAG, "orientation: portrait rotation="+rotation);
-//            } else {
-//                rotation = 90;
-//                Log.d(TAG, "orientation: landscape");
-//            }
-            setCamera(mCamera, info, 90);
+            setCamera(mCamera, info, mRotation);
             startPreview(surface);
         } catch (Exception e) {
             e.printStackTrace();
