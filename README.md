@@ -21,6 +21,20 @@ dependencies {
 }
 ```
 
+## step 3 Add it in your root build.gradle at the end of defaultConfig
+
+```
+ndk {
+        abiFilters 'armeabi-v7a'
+  }
+```
+
+## step 4 Add in Application
+
+```
+FaceHelper.getInstance().init(this);
+```
+
 # 下载体验
 
 ![img](https://www.pgyer.com/app/qrcode/w52uUA)
