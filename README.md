@@ -17,7 +17,7 @@ allprojects {
 
 ```
 dependencies {
-        implementation 'com.github.zining925:FaceAliveVer:V1.0.0'
+        implementation 'com.github.zining925:FaceAliveVer:1.0.1'
 }
 ```
 
