@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <com.zn.facealivelib.constants.camera.CameraPreview2
+        android:id="@+id/camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="960px"
+        android:layout_gravity="center_horizontal"/>
+    <SurfaceView
+        android:id="@+id/surfaceViewOverlap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="200dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="965px"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/white"
+        android:visibility="visible" />
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"/>
+</FrameLayout>
