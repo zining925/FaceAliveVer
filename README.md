@@ -17,10 +17,10 @@ allprojects {
 
 ```
 dependencies {
-        implementation 'com.github.liuzining925:FaceAliveVer:V1.0.0'
+        implementation 'com.github.zining925:FaceAliveVer:V1.0.0'
 }
 ```
 
 # 下载体验
 
-![w52uUA.png](f880212432b07f3fd4bc802e37985830.png)
+![img](https://www.pgyer.com/app/qrcode/w52uUA)
